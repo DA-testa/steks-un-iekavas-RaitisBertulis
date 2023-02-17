@@ -1,10 +1,6 @@
 # python3
-
 from collections import namedtuple
-
 Bracket = namedtuple("Bracket", ["char", "position"])
-
-
 def are_matching(left, right):
     return (left + right) in ["()", "[]", "{}"]
 
@@ -29,20 +25,21 @@ def find_mismatch(text):
 
 def main():
     text = input()
+    
+    
     if "F" in text:
             for i in range(6):
-                with open(f"test/{i}") as q:
-                    text = q.read()
+                with open(f"test/{i}") as tests:
+                    text = tests.read()
                     mismatch=find_mismatch(text)
                     print(mismatch)
+    
     
     if "I" in text:
         text = input()
         mismatch=find_mismatch(text)
         print(mismatch)
     
-
-
 
 if __name__ == "__main__":
     main()
