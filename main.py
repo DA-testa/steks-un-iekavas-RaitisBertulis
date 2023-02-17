@@ -17,12 +17,11 @@ def find_mismatch(text):
             
 
         if next in ")]}":
-            if len(opening_brackets_stack)==0:
+            if not opening_brackets_stack or not are_matching(opening_brackets_stack[-1].char, next):
                 return i + 1
-            top = opening_brackets_stack.pop()
-            if not are_matching(top.char, next):
-                return i + 1
-    if len(opening_brackets_stack) > 0:
+            opening_brackets_stack.pop()
+
+    if opening_brackets_stack:
         return opening_brackets_stack[0].position
     return "Success"
             
@@ -30,8 +29,19 @@ def find_mismatch(text):
 
 def main():
     text = input()
-    mismatch = find_mismatch(text)
-    print(mismatch)
+    if "F" in text:
+            for i in range(6):
+                with open(f"test/{i}") as q:
+                    text = q.read()
+                    mismatch=find_mismatch(text)
+                    print(mismatch)
+    
+    if "I" in text:
+        text = input()
+        mismatch=find_mismatch(text)
+        print(mismatch)
+    
+
 
 
 if __name__ == "__main__":
