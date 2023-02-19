@@ -29,7 +29,7 @@ def main():
     
     if "F" in text:
             for i in range(6):
-                with open(f"test/{i}") as tests:
+                with open("test/{i}") as tests:
                     text = tests.read()
                     mismatch=find_mismatch(text)
                     print(mismatch)
